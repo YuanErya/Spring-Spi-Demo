@@ -1,0 +1,5 @@
+com.ruayou.springspiimport.bean.MyBean=com.ruayou.springspiimport.bean.OneBean,\
+com.ruayou.springspiimport.bean.TwoBean\
+  
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.ruayou.springspiimport.config.MyConfiguration
+
