@@ -19,7 +19,7 @@ public class MySelector implements ImportSelector {
     @Override
     public String[] selectImports(AnnotationMetadata importingClassMetadata) {
         List<MyBean> myBeans = SpringFactoriesLoader.loadFactories(MyBean.class, this.getClass().getClassLoader());
-        if(myBeans==null|| myBeans.size() ==0){
+        if(myBeans==null|| myBeans.isEmpty()){
             return new String[0];
         }
         int size = myBeans.size();

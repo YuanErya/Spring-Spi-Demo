@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * 空项目，用于测试添加依赖之后能否正常注入。
+ * @author yuaner
  */
 @SpringBootApplication
 public class SpringSpiTestApplication {
