@@ -61,22 +61,57 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
-                <configuration>
-                    <mainClass>com.ruayou.springspitest.SpringSpiTestApplication</mainClass>
-                    <skip>true</skip>
-                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>repackage</id>
+                        <!-- 绑定生命周期 -->
+                        <phase>package</phase>
                         <goals>
-                            <goal>repackage</goal>
+                            <goal>copy-dependencies</goal>
                         </goals>
+                        <!-- 设置依赖的存放路径 -->
+                        <configuration>
+                            <outputDirectory>lib</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.2</version>
+                <!-- 对插件进行个性化配置 -->
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- 将入口类添加到 MANIFEST.MF 中 -->
+                            <mainClass>com.ruayou.springspitest.SpringSpiTestApplication</mainClass>
+                            <addClasspath>true</addClasspath>
+                            <!-- 将依赖的存放位置添加到 MANIFEST.MF 中-->
+                            <classpathPrefix>../lib/</classpathPrefix>
+                        </manifest>
+                    </archive>
+                    <outputDirectory>app</outputDirectory>
+                </configuration>
+            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                <version>${spring-boot.version}</version>-->
+<!--                <configuration>-->
+<!--                    <mainClass>com.ruayou.springspitest.SpringSpiTestApplication</mainClass>-->
+<!--                    <skip>false</skip>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>repackage</id>-->
+<!--                        <goals>-->
+<!--                            <goal>repackage</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 
