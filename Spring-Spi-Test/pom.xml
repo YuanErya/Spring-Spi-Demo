@@ -95,6 +95,7 @@
                     <outputDirectory>app</outputDirectory>
                 </configuration>
             </plugin>
+<!--            spring-boot-maven-plugin插件会打包出来一个完整的包含所有依赖的jar包（比较庞大）-->
 <!--            <plugin>-->
 <!--                <groupId>org.springframework.boot</groupId>-->
 <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
